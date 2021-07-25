@@ -42,8 +42,9 @@ def copy_log(filepath = 'checkpoint'):
     shutil.copyfile(filepath, os.path.join('log_backup.txt'))
 
 def save_model(state, checkpoint='checkpoint', filename='checkpoint.pth.tar'):
+    path = '/content/drive/MyDrive/cpn'
     filename = 'epoch'+str(state['epoch']) + filename
-    filepath = os.path.join(checkpoint, filename)
+    filepath = os.path.join(path, checkpoint, filename)
     torch.save(state, filepath)
 
     # if snapshot and state.epoch % snapshot == 0:
@@ -51,7 +52,8 @@ def save_model(state, checkpoint='checkpoint', filename='checkpoint.pth.tar'):
 
 def save_pred(preds, checkpoint='checkpoint', filename='preds_valid.mat'):
     preds = to_numpy(preds)
-    filepath = os.path.join(checkpoint, filename)
+    path = '/content/drive/MyDrive/cpn'
+    filepath = os.path.join(path, checkpoint, filename)
     scipy.io.savemat(filepath, mdict={'preds' : preds})
 
 
